@@ -119,5 +119,5 @@ const styles = StyleSheet.create({
   textoBotao: {
     fontSize: 18,
     fontWeight: "700"
-  },
+  }
 });
