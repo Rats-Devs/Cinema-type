@@ -1,70 +1,75 @@
-import { SymbolView } from 'expo-symbols';
-import { Link, Tabs } from 'expo-router';
-import { Platform, Pressable } from 'react-native';
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import { StyleSheet, Text } from "react-native";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
+  const cor_principal = "#1C1E1F";
+  const cor_secundaria = "#F2F0EF";
+  const cor_destaque = "#FF0000";
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
+        <Tabs
+        screenOptions={{
+            tabBarActiveTintColor: "#FF0000",
+            tabBarInactiveTintColor: "#838181bb",
+
+            tabBarStyle: {
+            height: 70,
+            paddingTop: 10,
+            backgroundColor: cor_principal,
+            borderTopWidth: 1,
+            borderTopColor: "#e0e0e0"
+            },
+
+            tabBarLabelStyle: {
+            fontSize: 12,
+            },
+
+            headerStyle: {
+              backgroundColor: cor_principal,
+              elevation: 0,
+              shadowOpacity: 0
+            }
+        }}
+        >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'chevron.left.forwardslash.chevron.right',
-                android: 'code',
-                web: 'code',
-              }}
-              tintColor={color}
-              size={28}
-            />
+          title: "Filmes",
+
+          headerTitle: () => (
+            <Text style={[styles.cinema, {color: cor_destaque}]}>Cinema</Text>
           ),
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable style={{ marginRight: 15 }}>
-                {({ pressed }) => (
-                  <SymbolView
-                    name={{ ios: 'info.circle', android: 'info', web: 'info' }}
-                    size={25}
-                    tintColor={Colors[colorScheme].text}
-                    style={{ opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="movie-open" size={size} color={color} />
+          ),          
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="login"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'chevron.left.forwardslash.chevron.right',
-                android: 'code',
-                web: 'code',
-              }}
-              tintColor={color}
-              size={28}
-            />
+          title: "Login",
+
+          headerTitle: () => (
+            <Text style={[styles.cinema, {color: cor_destaque}]}>Cinema</Text>
           ),
+
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),          
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+    cinema: {
+        fontSize: 30,
+        fontWeight: "800"
+    },
+    pontin: {
+        paddingRight: 18
+    },
+})
