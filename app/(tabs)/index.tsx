@@ -1,31 +1,27 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+export default function HomeScreen() {
+  const cor_principal = "#1C1E1F";
+  const cor_secundaria = "#F2F0EF";
+  const cor_destaque = "#FF0000";
 
-export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.texto}>Tela de Filmes Geral</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1, 
+    justifyContent: 'center', 
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#1C1E1F', // 🎨 COLOQUE AQUI A COR DE FUNDO DA TELA
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+
+  texto: {
+    color: '#FF0000', // 🎨 COLOQUE AQUI A COR DO TEXTO DO CONTEÚDO
+    fontSize: 18,
+  }
 });
