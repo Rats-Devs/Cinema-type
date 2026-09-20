@@ -60,6 +60,14 @@ export default function RootLayout() {
           ),          
         }}
       />
+               
+               <Tabs.Screen
+                name="[id]"
+                options={{
+               href: null,
+              headerShown: false,
+      }}
+    />
     </Tabs>
   );
 }
